@@ -1,4 +1,5 @@
-#This file is heavily based on the one original ly made by frankenstein91
+#This file is heavily based on the one originally made by frankenstein91
+#Maintainer: Your Name <youremail@domain.com>
 pkgname=deskhpsdr-git
 _pkgname=deskhpsdr
 pkgver=2.6.77.r18.g15d6e67
@@ -56,29 +57,29 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-
+ 
   ./build-rigctld.sh
   # Create the make.config.deskhpsdr file
   cat > make.config.deskhpsdr <<-EOF
-                TCI=ON
-                GPIO=OFF
-                MIDI=ON
-                SATURN=OFF
-                USBOZY=OFF
-                SOAPYSDR=OFF
-                STEMLAB=OFF
-                EXTENDED_NR=ON
-                TTS=ON
-                AUDIO=PULSE
-                ATU=OFF
-                COPYMODE=OFF
-                AUTOGAIN=ON
-                REGION1=OFF
-                WMAP=OFF
-                EQ12=OFF
-                DEVEL=OFF
-                TAHOEFIX=ON
-        EOF
+		TCI=ON
+		GPIO=OFF
+		MIDI=ON
+		SATURN=OFF
+		USBOZY=OFF
+		SOAPYSDR=OFF
+		STEMLAB=OFF
+		EXTENDED_NR=ON
+		TTS=ON
+		AUDIO=PULSE
+		ATU=OFF
+		COPYMODE=OFF
+		AUTOGAIN=ON
+		REGION1=OFF
+		WMAP=OFF
+		EQ12=OFF
+		DEVEL=OFF
+		TAHOEFIX=ON
+	EOF
   #./build_wdsp_nr4.sh
   make
 }
