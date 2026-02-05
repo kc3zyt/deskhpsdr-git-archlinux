@@ -47,7 +47,7 @@ prepare() {
   sed -i 's/CFLAGS?=/CFLAGS+=/' wdsp-1.29/Makefile
   sed -i 's|Exec=/usr/local/bin/deskhpsdr|Exec=/usr/bin/deskhpsdr|' LINUX/deskHPSDR.desktop
   sed -i 's|Icon=/usr/local/share/deskhpsdr/trx_icon.png|Icon=deskhpsdr|' LINUX/deskHPSDR.desktop
-  sed -i 's/^.*sudo apt-get.*$/echo "this is not debian"/' update_libs.sh
+  sed -i 's/^.*sudo.*$/echo "this is not debian"/' update_libs.sh
   #sed -i 's|wildcard /usr/local/include/wdsp.h|wildcard /usr/include/wdsp.h|' Makefile
   sed -i 's|make -j $CPU_CORES -l 4|make -j $CPU_CORES|' ./build-rigctld.sh
 #  sed -i 's|apt-get --yes install |echo |' build_wdsp_nr4.sh
@@ -58,6 +58,8 @@ build() {
   cd "${srcdir}/${_pkgname}"
  
   ./build-rigctld.sh
+  #this apparently has to go here or makepkg won't like it when it exits
+  ./update_libs.sh
   # Create the make.config.deskhpsdr file
   cat > make.config.deskhpsdr <<-EOF
 		TCI=ON
@@ -67,7 +69,6 @@ build() {
 		USBOZY=OFF
 		SOAPYSDR=OFF
 		STEMLAB=OFF
-		EXTENDED_NR=ON
 		TTS=ON
 		AUDIO=PULSE
 		ATU=OFF
@@ -79,8 +80,11 @@ build() {
 		DEVEL=OFF
 		TAHOEFIX=ON
 	EOF
-  #./build_wdsp_nr4.sh
   make
+  #apparently you have to do make once to build the WDSP libs and a second time to build deskhpsdr itself
+  echo "first make done"
+  #sleep 5
+  #make
 }
 
 package() {
