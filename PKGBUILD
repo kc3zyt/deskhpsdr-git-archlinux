@@ -45,7 +45,9 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
   #This next line was needed for deskhpsdr to compile properly. I wonder if it's still needed?
-  sed -i 's/CFLAGS?=/CFLAGS+=/' wdsp-1.29/Makefile
+  #2026-02-05: it was not needed anymore. Taking it out.
+  #sed -i 's/CFLAGS?=/CFLAGS+=/' wdsp-1.29/Makefile
+  #stuff to make this fit in more as a normal package and not a /usr/local thing
   sed -i 's|Exec=/usr/local/bin/deskhpsdr|Exec=/usr/bin/deskhpsdr|' LINUX/deskHPSDR.desktop
   sed -i 's|Icon=/usr/local/share/deskhpsdr/trx_icon.png|Icon=deskhpsdr|' LINUX/deskHPSDR.desktop
   #This next line isn't the best way to do this, but it works, so it's good enough
