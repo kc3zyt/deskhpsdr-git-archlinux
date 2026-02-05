@@ -44,21 +44,22 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
+  #This next line was needed for deskhpsdr to compile properly. I wonder if it's still needed?
   sed -i 's/CFLAGS?=/CFLAGS+=/' wdsp-1.29/Makefile
   sed -i 's|Exec=/usr/local/bin/deskhpsdr|Exec=/usr/bin/deskhpsdr|' LINUX/deskHPSDR.desktop
   sed -i 's|Icon=/usr/local/share/deskhpsdr/trx_icon.png|Icon=deskhpsdr|' LINUX/deskHPSDR.desktop
+  #This next line isn't the best way to do this, but it works, so it's good enough
   sed -i 's/^.*sudo.*$/echo "this is not debian"/' update_libs.sh
-  #sed -i 's|wildcard /usr/local/include/wdsp.h|wildcard /usr/include/wdsp.h|' Makefile
+  #I'm actually not entirely sure if I should be making this next change LOL
   sed -i 's|make -j $CPU_CORES -l 4|make -j $CPU_CORES|' ./build-rigctld.sh
-#  sed -i 's|apt-get --yes install |echo |' build_wdsp_nr4.sh
 
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
- 
+ #I found a few programs that need this rigctl support, so I'm building it. I think FreeDATA or FreeDV needs it. One of the two.
   ./build-rigctld.sh
-  #this apparently has to go here or makepkg won't like it when it exits
+  #Update libs apparently has to run here or makepkg will claim that the build fails when the script ends.
   ./update_libs.sh
   # Create the make.config.deskhpsdr file
   cat > make.config.deskhpsdr <<-EOF
@@ -81,10 +82,6 @@ build() {
 		TAHOEFIX=ON
 	EOF
   make
-  #apparently you have to do make once to build the WDSP libs and a second time to build deskhpsdr itself
-  echo "first make done"
-  #sleep 5
-  #make
 }
 
 package() {
