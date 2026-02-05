@@ -2,7 +2,7 @@
 #Maintainer: Your Name <youremail@domain.com>
 pkgname=deskhpsdr-git
 _pkgname=deskhpsdr
-pkgver=2.6.77.r18.g15d6e67
+pkgver=2.6.77.r48.g3a2cae8
 pkgrel=1
 pkgdesc="A GTK+/Linux based client for the HPSDR and Hermes-Lite SDR"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -47,9 +47,8 @@ prepare() {
   sed -i 's/CFLAGS?=/CFLAGS+=/' wdsp-1.29/Makefile
   sed -i 's|Exec=/usr/local/bin/deskhpsdr|Exec=/usr/bin/deskhpsdr|' LINUX/deskHPSDR.desktop
   sed -i 's|Icon=/usr/local/share/deskhpsdr/trx_icon.png|Icon=deskhpsdr|' LINUX/deskHPSDR.desktop
-#  sed -i 's|apt-get --yes update|echo "this is not debian"|' build_wdsp_nr4.sh
-  sed -i 's|wildcard /usr/local/include/wdsp.h|wildcard /usr/include/wdsp.h|' Makefile
-  printf '' > .WDSP_libs_updated
+  sed -i 's/^.*sudo apt-get.*$/echo "this is not debian"/'  sudo apt-get
+  #sed -i 's|wildcard /usr/local/include/wdsp.h|wildcard /usr/include/wdsp.h|' Makefile
   sed -i 's|make -j $CPU_CORES -l 4|make -j $CPU_CORES|' ./build-rigctld.sh
 #  sed -i 's|apt-get --yes install |echo |' build_wdsp_nr4.sh
 
