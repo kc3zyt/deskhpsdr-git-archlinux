@@ -30,7 +30,7 @@ depends=(
     'zstd'
     'python'
 )
-makedepends=('git' 'cmake' 'gcc-fortran' 'cppcheck' 'dos2unix' 'wget')
+makedepends=('git' 'cmake' 'gcc-fortran' 'cppcheck' 'dos2unix' 'wget' 'meson' 'ninja' 'clang' 'llvm')
 optdepends=('libad9361-iio: for AD9361 support')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
