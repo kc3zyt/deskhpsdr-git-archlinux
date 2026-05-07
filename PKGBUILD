@@ -29,8 +29,9 @@ depends=(
     'soapysdr'
     'zstd'
     'python'
+    'libwebsockets'
 )
-makedepends=('git' 'cmake' 'gcc-fortran' 'cppcheck' 'dos2unix' 'wget' 'libwebsockets' 'meson' 'ninja' 'clang' 'llvm')
+makedepends=('git' 'cmake' 'gcc-fortran' 'cppcheck' 'dos2unix' 'wget' 'meson' 'ninja' 'clang' 'llvm')
 optdepends=('libad9361-iio: for AD9361 support')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
