@@ -18,6 +18,7 @@ pkgbase = deskhpsdr-git
 	makedepends = ninja
 	makedepends = clang
 	makedepends = llvm
+	makedepends = nettle3
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = fftw
