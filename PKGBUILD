@@ -2,7 +2,7 @@
 #Maintainer: Your Name <youremail@domain.com>
 pkgname=deskhpsdr-git
 _pkgname=deskhpsdr
-pkgver=2.7.14.r3.g164b8ad
+pkgver=2.7.19.r4.gca01b06
 pkgrel=1
 pkgdesc="A GTK+/Linux based client for the HPSDR and Hermes-Lite SDR"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
