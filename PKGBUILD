@@ -2,7 +2,7 @@
 #Maintainer: Your Name <youremail@domain.com>
 pkgname=deskhpsdr-git
 _pkgname=deskhpsdr
-pkgver=2.7.19.r4.gca01b06
+pkgver=2.7.20.r5.gdd84898
 pkgrel=1
 pkgdesc="A GTK+/Linux based client for the HPSDR and Hermes-Lite SDR"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -93,6 +93,6 @@ package() {
   cd "${srcdir}/${_pkgname}"
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm755 LINUX/rigctld_deskhpsdr "${pkgdir}/usr/bin/rigctld_deskhpsdr"
-  install -Dm644 "release/${_pkgname}/hpsdr_icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/deskhpsdr.png"
+  install -Dm644 "stuff/${_pkgname}/hpsdr_icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/deskhpsdr.png"
   install -Dm644 "LINUX/deskHPSDR.desktop" "${pkgdir}/usr/share/applications/deskhpsdr.desktop"
 }
