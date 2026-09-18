@@ -1,6 +1,6 @@
 pkgbase = deskhpsdr-git
 	pkgdesc = A GTK+/Linux based client for the HPSDR and Hermes-Lite SDR
-	pkgver = 2.7.20.r5.gdd84898
+	pkgver = 2.8.2.r1.gce2fa24
 	pkgrel = 1
 	url = https://github.com/dl1bz/deskhpsdr
 	arch = i686

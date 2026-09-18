@@ -2,7 +2,7 @@
 #Maintainer: Your Name <youremail@domain.com>
 pkgname=deskhpsdr-git
 _pkgname=deskhpsdr
-pkgver=2.7.20.r5.gdd84898
+pkgver=2.8.2.r1.gce2fa24
 pkgrel=1
 pkgdesc="A GTK+/Linux based client for the HPSDR and Hermes-Lite SDR"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -48,7 +48,8 @@ prepare() {
   #This next line was needed for deskhpsdr to compile properly. I wonder if it's still needed?
   #2026-02-05: it was not needed anymore. Taking it out.
   #later: adding it back in to test:
-  sed -i 's/CFLAGS?=/CFLAGS+=/' wdsp-1.29/Makefile
+  #2026-09-18: WDSP is now 2.10. Testing without it
+  #sed -i 's/CFLAGS?=/CFLAGS+=/' wdsp-2.10/Makefile
   #stuff to make this fit in more as a normal package and not a /usr/local thing
   sed -i 's|Exec=/usr/local/bin/deskhpsdr|Exec=/usr/bin/deskhpsdr|' LINUX/deskHPSDR.desktop
   sed -i 's|Icon=/usr/local/share/deskhpsdr/trx_icon.png|Icon=deskhpsdr|' LINUX/deskHPSDR.desktop
